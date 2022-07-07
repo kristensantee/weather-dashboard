@@ -12,13 +12,13 @@
     <header>
         <h1>Weather Dashboard</h1>
     </header>
-    <aside>
+    <section class="aside">
         <h2>Search for a City:</h2>
-        <input class="form-control search-input" placeholder="Type to search">
+        <input class="form-control col-xs-3 search-input" placeholder="Type to search">
         <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
     <hr>
         <div class="saved-searches col-6 mx-auto"></div>
-    </aside>
+    </section>
     
     <section class="current-search">
         <h2 id="current-city-date">Current City</h2>
@@ -30,42 +30,43 @@
     </section>
     
     <section class="five-day-forecast">
-        <h3>5-Day Forecast:</h3>
-            <div class="card">
+        <h3 id="forecast">5-Day Forecast:</h3>
+        <br>
+        <div class="card">
                 <h4 id="day-one-date">Date</h4>
                 <p>Weather symbol</p>
                 <p>Temp: </p>
                 <p>Wind: </p>
                 <p>Humidity: </p>
-            </div>   
-            <div class="card">
+        </div>   
+        <div class="card">
                 <h4 id="day-two-date">Date</h4>
                 <p>Weather symbol</p>
                 <p>Temp: </p>
                 <p>Wind: </p>
                 <p>Humidity: </p>
-            </div>   
-            <div class="card">
+        </div>   
+        <div class="card">
                 <h4 id="day-three-date">Date</h4>
                 <p>Weather symbol</p>
                 <p>Temp: </p>
                 <p>Wind: </p>
                 <p>Humidity: </p>
-            </div>   
-            <div class="card">
+        </div>   
+        <div class="card">
                 <h4 id="day-three-date">Date</h4>
                 <p>Weather symbol</p>
                 <p>Temp: </p>
                 <p>Wind: </p>
                 <p>Humidity: </p>
-            </div>   
-            <div class="card">
+        </div>   
+        <div class="card">
                 <h4 id="day-three-date">Date</h4>
                 <p>Weather symbol</p>
                 <p>Temp: </p>
                 <p>Wind: </p>
                 <p>Humidity: </p>
-            </div>    
+        </div>    
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

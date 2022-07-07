@@ -4,7 +4,7 @@
 var APIKey = "3d8192d986e0f88e98e2fa4d8b729817";
 var city = "Tacoma";
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
-var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "units=imperial";
+var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
 var date = document.getElementById('date');
 // var currentDate = moment().format("YYYY");
 var searchButton = document.getElementById('search-btn');
@@ -25,7 +25,7 @@ fetch(queryURL)
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        // console.log(data);
         //fetch city name from search
         var cityTempEl = document.getElementById('current-city-date');
         cityTempEl.textContent = data.name;
@@ -51,7 +51,7 @@ fetch(queryURL)
                 return response.json();
             })
             .then(function (data) {
-                console.log(data);
+                // console.log(data);
                 //fetch current UV index, create, and append element
                 var currentUV = document.createElement('span');
                 currentUV.textContent = data.current.uvi;
@@ -63,5 +63,10 @@ fetch(queryURL)
             })
     
 fetch(forecastURL)
-  
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        console.log(data);
+    })
     
