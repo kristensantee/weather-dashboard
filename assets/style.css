@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    background: linear-gradient(120deg,deepskyblue, blue);
+    color: white;
+    text-align: center;
+}
+aside {
+    width: 350px;
+}
+.btn {
+    width: 350px;
+    margin-top: 5px;
+}
+.current-search {
+    display: inline;
+    /* margin-left: 500px;
+    border: 2px solid blue; */
+}
+
+.five-day-forecast {
+    display: flex;
+}
+.card {
+    flex-wrap: wrap;
+    width: 200px;
+    /* color: white; */
+}
