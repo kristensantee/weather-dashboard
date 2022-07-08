@@ -26,7 +26,8 @@ THEN I am again presented with current and future conditions for that city
 
 ## Run and Install
 
-The deployed project can be accessed [here](). A screenshot for my weather dashboard can be found here:
+The deployed project can be accessed [here](https://kristensantee.github.io/weather-dashboard/). A screenshot for my weather dashboard can be found here:
+![](./assets/Screenshot.png)
 
 ## How to Use the Project
 
