@@ -2,11 +2,13 @@
 //fetch API data: city, date, temp, wind, humidity, uv index, 5-day forecast of temp,wind,humidity, weather emoji
 
 var APIKey = "3d8192d986e0f88e98e2fa4d8b729817";
-var city = "Tacoma";
+var city = "Tacoma"
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
 var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
-var date = document.getElementById('date');
-date.textContent = moment().format("MM/D/YYYY")
+var dateDisplayEl = document.querySelector('#today');
+var date = moment().format("MMM D YYYY");
+
+dateDisplayEl.textContent = date;
 var searchButton = document.getElementById('search-btn');
 var cityInput = document.querySelector('.search-input');
 
@@ -16,6 +18,17 @@ searchButton.addEventListener("click", function(event) {
     var searchInput = cityInput.value;
     localStorage.setItem("city", searchInput);
 })
+
+function createButton() {
+    localStorage.getItem
+    //delete items in list
+    //loop to find all cities in local storage
+    //create button for each one 
+    //give button city name
+    //append it to the list
+    //call function on page load or user enters new city
+    
+}
 
 fetch(queryURL)
     .then(function (response) {
@@ -66,7 +79,9 @@ fetch(forecastURL)
         return response.json();
     })
     .then(function (data) {
-        console.log(data);
+        // console.log(data);
+        //day one date
+        document.getElementById('day-one-date').textContent = moment(data.list[4].dt, "X").format("M/D/YY");
         //day one forecast weather icon
         var day1Icon = document.createElement('img');
         day1Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[4].weather[0].icon + ".png");
@@ -83,7 +98,9 @@ fetch(forecastURL)
         var day1Humidity = document.createElement('span');
         day1Humidity.textContent = data.list[4].main.humidity + "%";
         document.getElementById('day-one-humidity').appendChild(day1Humidity);
-
+        
+        //day two date
+        document.getElementById('day-two-date').textContent = moment(data.list[12].dt, "X").format("M/D/YY");
         //day two forecast weather icon
         var day2Icon = document.createElement('img');
         day2Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[12].weather[0].icon + ".png");
@@ -101,6 +118,8 @@ fetch(forecastURL)
         day2Humidity.textContent = data.list[12].main.humidity + "%";
         document.getElementById('day-two-humidity').appendChild(day2Humidity);
 
+        //day three date
+        document.getElementById('day-three-date').textContent = moment(data.list[20].dt, "X").format("M/D/YY");
         //day three forecast weather icon
         var day3Icon = document.createElement('img');
         day3Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[20].weather[0].icon + ".png");
@@ -118,6 +137,8 @@ fetch(forecastURL)
         day3Humidity.textContent = data.list[20].main.humidity + "%";
         document.getElementById('day-three-humidity').appendChild(day3Humidity);
 
+        //day four date
+        document.getElementById('day-four-date').textContent = moment(data.list[28].dt, "X").format("M/D/YY");
         //day four forecast weather icon
         var day4Icon = document.createElement('img');
         day4Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[28].weather[0].icon + ".png");
@@ -135,6 +156,8 @@ fetch(forecastURL)
         day4Humidity.textContent = data.list[28].main.humidity + "%";
         document.getElementById('day-four-humidity').appendChild(day4Humidity);
 
+        //day five date
+        document.getElementById('day-five-date').textContent = moment(data.list[36].dt, "X").format("M/D/YY");
         //day five forecast weather icon
         var day5Icon = document.createElement('img');
         day5Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[36].weather[0].icon + ".png");

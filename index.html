@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"
+    ></script>
     <title>Weather Dashboard</title>
 </head>
 <body>
@@ -14,7 +18,7 @@
     </header>
     <section class="aside">
         <h2>Search for a City:</h2>
-        <input class="form-control col-xs-3 search-input" placeholder="Type to search">
+        <input class="form-control col-xs-3 search-input" id="cityInput" placeholder="Type to search">
         <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
     <hr>
         <div class="saved-searches col-6 mx-auto"></div>
@@ -22,7 +26,7 @@
     
     <section class="current-search">
         <h2 id="current-city-date">Current City</h2>
-            <h3 id="date"></h3>
+        <h3 id="today"></h3>
         <div id="current-temp">Temp: </div>
         <div id="current-wind">Wind: </div>
         <div id="current-humidity">Humidity: </div>
@@ -54,14 +58,14 @@
                 <p id="day-three-humidity">Humidity: </p>
         </div>   
         <div class="card">
-                <h4 id="day-three-date"></h4>
+                <h4 id="day-four-date"></h4>
                 <p id="day-four-icon"></p>
                 <p id="day-four-temp">Temp: </p>
                 <p id="day-four-wind">Wind: </p>
                 <p id="day-four-humidity">Humidity: </p>
         </div>   
         <div class="card">
-                <h4 id="day-three-date"></h4>
+                <h4 id="day-five-date"></h4>
                 <p id="day-five-icon"></p>
                 <p id="day-five-temp">Temp: </p>
                 <p id="day-five-wind">Wind: </p>

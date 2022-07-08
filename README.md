@@ -30,8 +30,8 @@ The deployed project can be accessed [here](). A screenshot for my weather dashb
 
 ## How to Use the Project
 
-
+This project was my first expansive experience with server-side APIs and I ended up using four for this project between three iterations of OpenWeather APIs and then the moment.js API as well. I know definitively I could have shorthanded some of the create/style/content/append data for the forecast cards but I felt it was good practice to build it out more fully before trying to streamline the code more. Mostly I was glad to be able to recognize that I could have shortened it so soon after writing it in the first place. The project is missing a few components like a color change function for the UV index and the search history being retained on the page. I have it pseudo-coded out around lines 22-29 but have not had the time to work it out into broader functionality. However, I was able to account for a five-day forecast with multiple data points, including weather icons. For right now, the search button stores the entry in local storage but it does not yet feed into the query urls. At this time, I have a placeholder city (Tacoma) to fulfill the variable for the city to generate fetch results that can be displayed on the page.
 
 ## How to Contribute to the Project
 
-This project was assigned to build familiarity with third-party APIs to build a functional weather dashboard and retain search history populated on the 
+This project was assigned to build familiarity with third-party APIs to build a functional weather dashboard and retain search history populated on the page.
