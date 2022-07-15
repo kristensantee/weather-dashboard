@@ -1,10 +1,7 @@
-//connect API
-//fetch API data: city, date, temp, wind, humidity, uv index, 5-day forecast of temp,wind,humidity, weather emoji
 
 var APIKey = "3d8192d986e0f88e98e2fa4d8b729817";
-var city = "Tacoma"
-var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
-var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
+// var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+// var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
 var dateDisplayEl = document.querySelector('#today');
 var date = moment().format("MMM D YYYY");
 
@@ -12,23 +9,25 @@ dateDisplayEl.textContent = date;
 var searchButton = document.getElementById('search-btn');
 var cityInput = document.querySelector('.search-input');
 
-//add event listener for search click
-searchButton.addEventListener("click", function(event) {
+searchButton.onclick = function(event) {
     event.preventDefault();
-    var searchInput = cityInput.value;
-    localStorage.setItem("city", searchInput);
+    runSearch();
+}
+
+$("#cityInput").keypress(function(event){
+    if (event.keyCode === 13) {
+    event.preventDefault();
+    runSearch();
+    }
 })
 
-function createButton() {
-    localStorage.getItem
-    //delete items in list
-    //loop to find all cities in local storage
-    //create button for each one 
-    //give button city name
-    //append it to the list
-    //call function on page load or user enters new city
-    
-}
+
+function runSearch() {
+    searchButton.innerText="New Search";
+    let city = document.getElementById("cityInput").value;
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIKey + "&units=imperial";
+    localStorage.setItem("city", city);
 
 fetch(queryURL)
     .then(function (response) {
@@ -62,12 +61,21 @@ fetch(queryURL)
             })
             .then(function (data) {
                 // console.log(data);
-                //fetch current UV index, create, and append element
+                //fetch current UV index, create, and append element. color change based on uv index rating
                 var currentUV = document.createElement('span');
                 currentUV.textContent = data.current.uvi;
-                currentUV.style.background = "green";
-                currentUV.style.color = "white";
-                document.getElementById('current-uv').appendChild(currentUV) ;
+                document.getElementById('current-uv').appendChild(currentUV);
+                if (currentUV.textContent < 3.00) {
+                    currentUV.style.background = "green";
+                    currentUV.style.color = "white";
+                } else if (currentUV.textContent > 6.00) {
+                    currentUV.style.background = "red";
+                    currentUV.style.color = "black";
+                } else {
+                    currentUV.style.background = "yellow";
+                    currentUV.style.color = "black";
+                }
+            
                 //fetch current weather icon, create, and append element
                 var currentWeatherIcon = document.createElement('img');
                 currentWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png");
@@ -183,4 +191,15 @@ fetch(forecastURL)
         // }}
         // console.log(result);
     })
-    
+}
+
+function createButton() {
+    localStorage.getItem(city);
+    console.log(city);
+    //delete items in list
+    //loop to find all cities in local storage
+    //create button for each one 
+    //give button city name
+    //append it to the list
+    //call function on page load or user enters new city
+}
