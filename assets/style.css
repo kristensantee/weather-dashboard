@@ -21,9 +21,11 @@ header {
     width: 350px;
     margin-top: 5px;
 }
-
+#current-icon {
+    border: 2px, solid, black;
+}
 .current-search {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
     width: 700px;
     margin-right: 0px;
@@ -31,14 +33,10 @@ header {
     padding: 20px 20px;
     display: inline-block;
 }
-
 .five-day-forecast {
     display: flex;
     padding-top: 25px;
     margin-left: 20px;
-}
-#forecast {
-    flex-wrap: wrap;
 }
 .card {
     flex-wrap: wrap;

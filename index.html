@@ -14,62 +14,64 @@
 </head>
 <body>
     <header>
-        <h1>Weather Dashboard</h1>
+        <h1 id="head">Weather Dashboard</h1>
     </header>
     <section class="aside">
         <h2>Search for a City:</h2>
         <input class="form-control col-xs-3 search-input" id="cityInput" placeholder="Type to search">
         <button type="submit" class="btn btn-primary" id="search-btn">Search</button>
     <hr>
-        <div class="saved-searches col-6 mx-auto"></div>
+        <div class="saved-searches col-6 mx-auto" id="append"></div>
     </section>
     
     <section class="current-search">
-        <h2 id="current-city-date"></h2>
+        <h2 id="current-city">
+        <img id= "current-icon" src="http://www.noaa.gov/sites/default/files/styles/landscape_width_650/public/legacy/image/2019/Jun/iStock-477110708%20%281%29.jpg?itok=qLIDK-SD">
+        </h2>
         <h3 id="today"></h3>
-        <div id="current-temp">Temp: </div>
-        <div id="current-wind">Wind: </div>
-        <div id="current-humidity">Humidity: </div>
-        <div id="current-uv">UV Index: </div>
+        <div id="current-temp"></div>
+        <div id="current-wind"></div>
+        <div id="current-humidity"></div>
+        <div id="current-uv"></div>
     </section>
     
     <section class="five-day-forecast">
-        <h3 id="forecast">5-Day Forecast:</h3>
+        <h3 id="forecast"></h3>
         <br>
         <div class="card">
                 <h4 id="day-one-date"></h4>
                 <p id="day-one-icon"></p>
-                <p id="day-one-temp">Temp: </p>
-                <p id="day-one-wind">Wind: </p>
-                <p id="day-one-humidity">Humidity: </p>
+                <p id="day-one-temp"></p>
+                <p id="day-one-wind"></p>
+                <p id="day-one-humidity"></p>
         </div>   
         <div class="card">
                 <h4 id="day-two-date"></h4>
                 <p id="day-two-icon"></p>
-                <p id="day-two-temp">Temp: </p>
-                <p id="day-two-wind">Wind: </p>
-                <p id="day-two-humidity">Humidity: </p>
+                <p id="day-two-temp"></p>
+                <p id="day-two-wind"></p>
+                <p id="day-two-humidity"></p>
         </div>   
         <div class="card">
                 <h4 id="day-three-date"></h4>
                 <p id="day-three-icon"></p>
-                <p id="day-three-temp">Temp: </p>
-                <p id="day-three-wind">Wind: </p>
-                <p id="day-three-humidity">Humidity: </p>
+                <p id="day-three-temp"></p>
+                <p id="day-three-wind"></p>
+                <p id="day-three-humidity"></p>
         </div>   
         <div class="card">
                 <h4 id="day-four-date"></h4>
                 <p id="day-four-icon"></p>
-                <p id="day-four-temp">Temp: </p>
-                <p id="day-four-wind">Wind: </p>
-                <p id="day-four-humidity">Humidity: </p>
-        </div>   
+                <p id="day-four-temp"></p>
+                <p id="day-four-wind"></p>
+                <p id="day-four-humidity">
+        </div>
         <div class="card">
                 <h4 id="day-five-date"></h4>
                 <p id="day-five-icon"></p>
-                <p id="day-five-temp">Temp: </p>
-                <p id="day-five-wind">Wind: </p>
-                <p id="day-five-humidity">Humidity: </p>
+                <p id="day-five-temp"></p>
+                <p id="day-five-wind"></p>
+                <p id="day-five-humidity"></p>
         </div>    
     </section>
 
