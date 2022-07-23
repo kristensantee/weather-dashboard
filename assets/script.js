@@ -5,7 +5,7 @@ var city = '';
 var searchButton = document.getElementById('search-btn');
 var cityInput = document.querySelector('.search-input');
 var currentIcon = document.getElementById('current-icon')
-
+//Search button click handler
 searchButton.onclick = function(event) {
     event.preventDefault();
     getDate();
@@ -13,7 +13,7 @@ searchButton.onclick = function(event) {
     reset();
     clear();
 }
-
+//Search button enter key handler
 $("#cityInput").keypress(function(event){
     if (event.keyCode === 13) {
     event.preventDefault();
@@ -23,17 +23,17 @@ $("#cityInput").keypress(function(event){
     clear();
     }
 })
-
+//Function to publish current date to page
 function getDate(){
 dateDisplayEl.textContent = date;
 }
-
+//Function to reset search window to placeholder text
 function reset() {
     var initialValue = "";
     var query = document.getElementById('cityInput');
     query.value = initialValue;
 }
-
+//Function to fetch data from APIs and publish to page
 function runSearch() {
     searchButton.innerText="New Search";
     let city = document.getElementById("cityInput").value;
@@ -65,7 +65,6 @@ fetch(queryURL)
         var lat = data.coord.lat;
         var long = data.coord.lon;
         var latLonURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + long + "&units=imperial&exclude=minutely,hourly&appid=" + APIKey;
-        // var latLon = [lat, long];
         return fetch(latLonURL)
     })
             .then(function (response) {
@@ -73,6 +72,11 @@ fetch(queryURL)
             })
             .then(function (data) {
                 // console.log(data);
+                //fetch and display current weather icon
+                var iconURL = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
+                var currentIcon = document.createElement("img");
+                currentIcon.setAttribute("src", iconURL);
+                document.getElementById('current-city').appendChild(currentIcon)
                 //fetch and display current UV index. color change based on uv index rating
                 var currentUV = document.getElementById('current-uv');
                 currentUV.textContent = "UV Index: " + data.current.uvi;
@@ -85,14 +89,7 @@ fetch(queryURL)
                 } else {
                     currentUV.style.background = "yellow";
                     currentUV.style.color = "black";
-                }
-                //fetch and display current weather icon
-                var iconURL = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
-                console.log(iconURL);
-                currentIcon.src = iconURL;
-                // document.getElementById('current-city').appendChild(iconURL)
-                // placeURL.setAttribute("src", iconURL);
-                // currentWeatherIcon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png");
+                }    
             })
 
 // Five day forecast cards with date, temp, wind, humidity
@@ -105,9 +102,10 @@ fetch(forecastURL)
         //day one date
         document.getElementById('day-one-date').textContent = moment(data.list[4].dt, "X").format("M/D/YY");
         //day one forecast weather icon
-        var day1Icon = document.getElementById('day-one-icon');
-        day1Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[4].weather[0].icon + ".png");
-        // document.getElementById('day-one-icon').appendChild(day1Icon);
+        var iconURL1 = "https://openweathermap.org/img/wn/" + data.list[4].weather[0].icon + ".png"
+        var day1Icon = document.createElement('img');
+        day1Icon.setAttribute("src", iconURL1);
+        document.getElementById('day-one-icon').appendChild(day1Icon);
         //day one forecast temp
         var day1Temp = document.getElementById('day-one-temp');
         day1Temp.textContent = "Temp: " + data.list[4].main.temp + "\u00B0";
@@ -123,6 +121,7 @@ fetch(forecastURL)
         //day two forecast weather icon
         var day2Icon = document.createElement('img');
         day2Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[12].weather[0].icon + ".png");
+        document.getElementById('day-two-icon').appendChild(day2Icon);
         //day two forecast temp
         var day2Temp = document.getElementById('day-two-temp')
         day2Temp.textContent = "Temp: " + data.list[12].main.temp + "\u00B0";
@@ -138,6 +137,7 @@ fetch(forecastURL)
         //day three forecast weather icon
         var day3Icon = document.createElement('img');
         day3Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[20].weather[0].icon + ".png");
+        document.getElementById('day-three-icon').appendChild(day3Icon);
         //day three forecast temp
         var day3Temp = document.getElementById('day-three-temp');
         day3Temp.textContent = "Temp: " + data.list[20].main.temp + "\u00B0";
@@ -153,6 +153,7 @@ fetch(forecastURL)
         //day four forecast weather icon
         var day4Icon = document.createElement('img');
         day4Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[28].weather[0].icon + ".png");
+        document.getElementById('day-four-icon').appendChild(day4Icon);
         //day four forecast temp
         var day4Temp = document.getElementById('day-four-temp');
         day4Temp.textContent = "Temp: " + data.list[28].main.temp + "\u00B0";
@@ -168,6 +169,7 @@ fetch(forecastURL)
         //day five forecast weather icon
         var day5Icon = document.createElement('img');
         day5Icon.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[36].weather[0].icon + ".png");
+        document.getElementById('day-five-icon').appendChild(day5Icon);
         //day five forecast temp
         var day5Temp = document.getElementById('day-five-temp');
         day5Temp.textContent = "Temp: " + data.list[36].main.temp + "\u00B0";
@@ -238,9 +240,9 @@ function createButton() {
                             currentUV.style.color = "black";
                         }
                         var iconURL = "https://openweathermap.org/img/wn/" + data.current.weather[0].icon + ".png";
-                        console.log(iconURL);
-                        var placeURL = document.getElementById('current-icon');
-                        placeURL.setAttribute("src", iconURL);
+                        var currentIcon = document.createElement("img");
+                        currentIcon.setAttribute("src", iconURL);
+                        document.getElementById('current-city').appendChild(currentIcon);
                     })
         fetch(forecastURL)
             .then(function (response) {
